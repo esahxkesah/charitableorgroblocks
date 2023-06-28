@@ -1,16 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Web3 from "web3";
 import { charitableorgABI } from "./charitableorgABI";
 
 import "./App.css";
 
-const web3 = new Web3(new Web3.providers.HttpProvider("http://127.0.0.1:8545"));
+const web3 = new Web3(new Web3.providers.HttpProvider("http://127.0.0.1:7545"));
 web3.eth.defaultAccount = web3.eth.accounts[0];
 
-const contractAddress = "0x651264122a5DfB0A50355Bd458562827cB81ff18";
+const contractAddress = "0x7d30527be529898448Df9fE0312e467243A51c62";
 const charitableorg = new web3.eth.Contract(
   charitableorgABI,
- 
+  contractAddress
 );
 
 function App() {
@@ -49,10 +49,6 @@ function App() {
     setWithdrawalAmount(e.target.value);
   };
 
-  const getContractAddress = () => {
-    console.log("Contract Address:", contractAddress);
-  };
-
   return (
     <div className="App">
       <header className="App-header">
@@ -87,9 +83,7 @@ function App() {
           <input type="submit" value="Withdraw" />
         </form>
         <br />
-        <button onClick={getContractAddress} type="button">
-          Get Contract Address
-        </button>
+        <p>Contract Address: {contractAddress}</p>
       </header>
     </div>
   );
