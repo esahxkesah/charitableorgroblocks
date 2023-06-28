@@ -56,7 +56,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Smart Contract UI</h1>
+        <h1>E-Sadaqah</h1>
         <form onSubmit={donate}>
           <label>
             Donation Amount (in ETH):
